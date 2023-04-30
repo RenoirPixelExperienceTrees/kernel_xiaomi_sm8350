@@ -1977,9 +1977,9 @@ again:
 
 		if (skb_network_header(skb2) < skb2->data ||
 		    skb_network_header(skb2) > skb_tail_pointer(skb2)) {
-			net_crit_ratelimited("protocol %04x is buggy, dev %s\n",
-					     ntohs(skb2->protocol),
-					     dev->name);
+//			net_crit_ratelimited("protocol %04x is buggy, dev %s\n",
+//					     ntohs(skb2->protocol),
+//					     dev->name);
 			skb_reset_network_header(skb2);
 		}
 
@@ -4753,7 +4753,7 @@ int (*gsb_nw_stack_recv)(struct sk_buff *skb) __rcu __read_mostly;
 EXPORT_SYMBOL(gsb_nw_stack_recv);
 #endif
 
-static int (*embms_tm_multicast_recv)(struct sk_buff *skb) __rcu __read_mostly;
+int (*embms_tm_multicast_recv)(struct sk_buff *skb) __rcu __read_mostly;
 EXPORT_SYMBOL(embms_tm_multicast_recv);
 
 void process_embms_receive_skb(struct sk_buff *skb)
